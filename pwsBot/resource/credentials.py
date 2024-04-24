@@ -3,7 +3,7 @@ import sys
 
 TOKEN = 'token'
 
-def get_token():
+def get_token(file_path):
     try:
         with open(file_path, 'r') as file:
             data = json.load(file)

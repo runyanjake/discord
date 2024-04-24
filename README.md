@@ -15,16 +15,26 @@ Requirements: `pip install -r requirements.txt`
 
 Copy bot's token or regenerate it from the main page. Place this in a file called `token.json` in the root directory here or modify `resource/credentials.py` to find it:
 
-`resource/credentials.py`:
+`token.json`:
 ```
 {
     "token":"AAAAAAAAAAAAAA..."
 }
 ```
 
-If you need to configure permissions for the bot itself, that happens in the `Bot` tab. Can be done later.
+Go to `Bot` tab to configure permissions. In my experience, the `Requires OAuth2 Code Grant` toggle broke my ability to add the bot to servers, so avoiding that's probably a good idea for local dev.
+In general, if there is a mismatch between the scopes and permissions assigned to the bot, it won't be able to be added to the server. 
+Additionally you have to grant the bot the right intents. See how this is done in `pwsBot/resources/intents.py`. Also see `https://discordpy.readthedocs.io/en/stable/api.html`.
 
-For now, go to `OAuth2 > Oauth2 URL Generator` and select Bot with the desired permissions. Can be done later.
+Go to `OAuth2 > Oauth2 URL Generator` and select Bot with the desired permissions. Can modify these, generate a new invite link, and re-add to the server again later.
+
+I am currently using the following Scopes/Permissions:
+
+Scopes
+- bot
+
+Permissions
+- administrator
 
 Invite bot to server using the url generated above. I've set the redirect URL to `https://github.com/runyanjake/discord` for after users authenticate with OAuth.
 
