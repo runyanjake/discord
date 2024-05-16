@@ -1,11 +1,11 @@
 FROM python:3.11
 
-WORKDIR /discord
+WORKDIR /app
 
-COPY ./ /discord
+COPY bot.py requirements.txt ./
+COPY resource/ ./resource
+COPY commands/ ./commands
 
-EXPOSE 3000
-
-WORKDIR /discord
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD [ "python", "bot.py" ]

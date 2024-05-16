@@ -15,7 +15,7 @@ pws_command_with_args_regex = r'/pws \S+(.*)'
 
 intents = get_intents()
 client = discord.Client(intents=intents)
-client_token = get_token('../token.json')
+client_token = get_token('resource/token.json')
 
 @client.event
 async def on_ready():

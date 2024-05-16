@@ -1,10 +1,8 @@
-version: "3"
+version: "3.8"
 
 services:
-  website:
-    image: pwsBot:latest
+  pwsBot:
+    image: pwsbot:latest
     container_name: pwsBot
     build: .
-    ports:
-    - 8000:8000
 

@@ -1,4 +1,4 @@
 env/
 pwsBot/commands/__pycache__/
 pwsBot/resource/__pycache__/
-token.json
+pwsBot/resource/token.json
