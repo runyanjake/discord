@@ -1,4 +1,6 @@
 import discord
+import logging
+import sys
 
 from resource.credentials import get_token
 from resource.intents import get_intents
@@ -9,9 +11,12 @@ intents = get_intents()
 client = discord.Client(intents=intents)
 client_token = get_token('resource/token.json')
 
+log_format = '%(asctime)s %(levelname)s\t%(filename)s %(message)s'
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format=log_format)
+
 @client.event
 async def on_ready():
-    print('Logged in as {0.user}'.format(client))
+    logging.info('Logged in as {0.user}'.format(client))
 
 @client.event
 async def on_message(message):

@@ -5,4 +5,6 @@ services:
     image: pwsbot:latest
     container_name: pwsBot
     build: .
+    environment:
+      - PYTHONUNBUFFERED=1
 
