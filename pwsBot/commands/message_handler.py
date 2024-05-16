@@ -13,7 +13,7 @@ log_format = '%(asctime)s %(levelname)s\t%(filename)s %(message)s'
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format=log_format)
 
 async def handle_message(client, message):
-    logging.info('Received message: ' + str(message.content))
+    logging.info('Observed message: "' + str(message.content) + '" from user [' + str(message.author) + '].')
 
     #Ignore messages this bot has sent to avoid answering itself.
     if message.author == client.user:
@@ -42,7 +42,7 @@ async def handle_message(client, message):
                     logging.warn('Command ' + command + ' did not specify argument(s): ' + message.content + '.')
                     await message.author.send('Did not specify argument(s) for command: `' + message.content + '`. Check list of commands for valid usage.')
                 else:
-                    await echo(message)
+                    await echo(message, args)
             case _:
                 logging.warn('Invalid command ' + command + ' received.')
                 await message.author.send('Invalid command `' + command + '`. Check list of commands for valid usage.')
