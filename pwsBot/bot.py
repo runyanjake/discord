@@ -2,10 +2,12 @@ import discord
 import logging
 import sys
 
+from commands.message_handler import handle_message
+
 from resource.credentials import get_token
 from resource.intents import get_intents
 
-from commands.message_handler import handle_message
+from voice.voice_event_handler import handle_voice_event
 
 intents = get_intents()
 client = discord.Client(intents=intents)
@@ -22,4 +24,9 @@ async def on_ready():
 async def on_message(message):
     await handle_message(client, message)
 
+@client.event
+async def on_voice_state_update(member, before, after):
+    await handle_voice_event(member, before, after)
+
 client.run(client_token)
+
