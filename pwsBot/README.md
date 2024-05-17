@@ -21,3 +21,7 @@ The bot will echo the text in the channel.
 
 Prints "Hello, World!" to the channel.
 
+##### Voice Channel Auto-Provisioning
+
+If a user joins a watched channel, the bot will auto-provision a new voice channel for them and move them to it. Saves on channel clog!
+
