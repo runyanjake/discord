@@ -23,9 +23,9 @@ async def handle_voice_event(member, before, after):
         provisioned_channels.append(new_channel_name)
         logging.info('Created and tracked new voice channel: ' + str(new_channel_name))
         logging.debug('Tracked channels: ' + str(provisioned_channels))
-        
+        logging.info('Moving user ' + str(member.name) + ' from channel ' + str(after.channel.name) + ' to channel ' + str(new_channel.name) + '.')
+
         await(member.move_to(new_channel))
-        logging.info('Moved user ' + str(member.name) + ' from channel ' + str(after.channel.name) + ' to channel ' + str(new_channel.name) + '.')
     elif before.channel and not before.channel.members and before.channel.name in provisioned_channels:
         # User was the last one to leave a tracked channel.
         logging.info('User ' + str(member.name) + ' was the last to leave tracked channel ' + str(before.channel.name) + '.')
