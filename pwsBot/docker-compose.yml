@@ -7,4 +7,5 @@ services:
     build: .
     environment:
       - PYTHONUNBUFFERED=1
-
+    labels:
+      - traefik.enable=false
