@@ -34,15 +34,22 @@ async def handle_message(client, message):
             case 'helloworld':
                 if args:
                     logging.warn('Command ' + command + ' got unexpected arguments: ' + message.content + '.')
-                    await message.author.send('Unexpected arguments for command: `' + message.content + '`. Check list of commands for valid usage.')
+                    await message.author.send('Unexpected arguments for command: `' + message.content + '`. Check list of commands (`/pws help`) for valid usage.')
                 else:
                     await hello_world(message)
             case 'echo': 
                 if not args:
                     logging.warn('Command ' + command + ' did not specify argument(s): ' + message.content + '.')
-                    await message.author.send('Did not specify argument(s) for command: `' + message.content + '`. Check list of commands for valid usage.')
+                    await message.author.send('Did not specify argument(s) for command: `' + message.content + '`. Check list of commands (`/pws help`) for valid usage.')
                 else:
                     await echo(message, args)
+            case 'help':
+            case 'commands':
+                if args:
+                    logging.warn('Command ' + command + ' got unexpected arguments: ' + message.content + '.')
+                    await message.author.send('Unexpected arguments for command: `' + message.content + '`. Check list of commands (`/pws help`) for valid usage.')
+                else:
+                    await message.author.send('**Commands**\n- /pws helloworld\n- /pws echo\n- /pws help\n- /pws commands')
             case _:
                 logging.warn('Invalid command ' + command + ' received.')
                 await message.author.send('Invalid command `' + command + '`. Check list of commands for valid usage.')
