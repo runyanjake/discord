@@ -5,7 +5,7 @@ Simple Discord bot that does some useful things.
 ### Running 
 Build and run the docker container with a few commands:
 
-`docker stop pwsBot && docker system prune && docker-compose build && docker-compose up -d && docker logs -f pwsBot`
+`docker-compose down && docker system prune -af && docker-compose build && docker-compose up -d && docker logs -f pwsBot`
 
 ### Functions
 

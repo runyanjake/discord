@@ -43,8 +43,7 @@ async def handle_message(client, message):
                     await message.author.send('Did not specify argument(s) for command: `' + message.content + '`. Check list of commands (`/pws help`) for valid usage.')
                 else:
                     await echo(message, args)
-            case 'help':
-            case 'commands':
+            case 'help' | 'commands':
                 if args:
                     logging.warn('Command ' + command + ' got unexpected arguments: ' + message.content + '.')
                     await message.author.send('Unexpected arguments for command: `' + message.content + '`. Check list of commands (`/pws help`) for valid usage.')
